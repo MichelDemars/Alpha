@@ -14,8 +14,8 @@
 			}
 			@media screen and (orientation: landscape) {
 				#MyVideo{
-					height: 80%;
-					width: 80%;
+					height: 90%;
+					width: 90%;
 				}
 			}
 			@media screen and (orientation: portait) {
@@ -25,17 +25,64 @@
 				}
 			}
 		</style>
+		<script  type="text/javascript">
+			function play() { 
+				var vid = document.getElementById("MaVideo");
+				vid.play(); 
+			} 
+			function pause() { 
+				var vid = document.getElementById("MaVideo");
+				vid.pause(); 
+			} 
+			function ReduceSpeed(){
+				var vid = document.getElementById("MaVideo");
+				if (vid.defaultPlaybackRate > 0.4){
+					vid.defaultPlaybackRate -= 0.2;
+					vid.load();
+					vid.play(); 
+				}
+			}
+			function SpeedPlus(){
+				var vid = document.getElementById("MaVideo");
+				if (vid.defaultPlaybackRate < 1){
+					vid.defaultPlaybackRate += 0.2;
+					vid.load();
+					vid.play(); 
+				}
+			}
+			function ReduceVolume(){
+				var vid = document.getElementById("MaVideo");
+				if (vid.volume > 0){
+					vid.volume -= 0.1;
+				}
+			}
+			function VolumePlus(){
+				var vid = document.getElementById("MaVideo");
+				if (vid.volume < 1){
+					vid.volume += 0.1;
+				}
+			}
+		</script>
 	</head>
 	<body> 
-		<video id="MyVideo" controls>
+		<video id="MaVideo" >
 		  <source src="AlphaCom_Alphabet.mp4" type="video/mp4">
 		  <source src="AlphaCom_Alphabet.ogg" type="video/ogg">
 		  <source src="AlphaCom_Alphabet.m4v" type="video/m4v">
 		  <source src="AlphaCom_Alphabet.mov" type="video/mov">
+		  <source src="AlphaCom_Alphabet.avi" type="video/avi">
 		  Your browser does not support HTML5 video.
 		</video>
-		
-		
+		<nav>
+			<ul>
+				<button type="button" onclick="play()"> <li>Play     </li></button>
+				<button type="button" onclick="pause()"><li>Pause    </li></button>
+				<button onclick="ReduceSpeed()">        <li>Speed -  </li></button>
+				<button onclick="SpeedPlus()">          <li>Speed +  </li></button>
+				<button onclick="ReduceVolume()">       <li>Volume - </li></button>
+				<button onclick="VolumePlus()">         <li>Volume + </li></button>
+			</ul>
+		</nav>
 	<!--
 	<main class="flexbox">
 	-->
