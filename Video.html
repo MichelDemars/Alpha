@@ -80,20 +80,28 @@
 			function ReduceVolume(){
 				var vid = document.getElementById("MaVideo");
 				if (vid.volume > 0){
-					if (vid.volume < 0.11 ){
-						vid.volume -= 0.01;
+					if (vid.volume < 0.011 ){
+						vid.volume -= 0.001;
 					}else{
-						vid.volume -= 0.1;
+						if (vid.volume < 0.11 ){
+							vid.volume -= 0.01;
+						}else{
+							vid.volume -= 0.1;
+						}
 					}
 				}
 			}
 			function VolumePlus(){
 				var vid = document.getElementById("MaVideo");
 				if (vid.volume < 1){
-					if (vid.volume < 0.1){
-						vid.volume += 0.01;
+					if (vid.volume < 0.01){
+						vid.volume += 0.001;
 					}else{
-						vid.volume += 0.1;
+						if (vid.volume < 0.1){
+							vid.volume += 0.01;
+						}else{
+							vid.volume += 0.1;
+						}
 					}
 				}
 			}
