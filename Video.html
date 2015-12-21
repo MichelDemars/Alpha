@@ -40,17 +40,17 @@
 				margin: 0;
 				align: center;
 			}
-			@media screen and (orientation: landscape) {
-				#MyVideo{
+/*			@media screen and (orientation: landscape) {
+				#MaVideo{
 					height: auto;
 				}
 			}
 			@media screen and (orientation: portait) {
-				#MyVideo{
+				#MaVideo{
 					width: 100%;
 					height: auto;
 				}
-			}
+			}*/
 		</style>
 		<script  type="text/javascript">
 			function DisplayButtons(){
@@ -114,7 +114,7 @@
 		</script>
 	</head>
 	<body> 
-		<video style="width: 100%" id="MaVideo" >
+		<video id="MaVideo" style="width: 100%"  >
 		  <source src="AlphaCom_Alphabet.wmv" type="video/wmv">
 		  <source src="AlphaCom_Alphabet.ogg" type="video/ogg">
 		  <source src="AlphaCom_Alphabet.3gp" type="video/3gp">
@@ -141,18 +141,21 @@
 			var HauteurEcran = window.outerHeight;
 			var Ratio =  HauteurEcran /LargeureEcran;
 			var Reference = 0.75;
-			var Correction;
-			switch (LargeureEcran){
-			case 225:
-				Correction = 85;	
-				break;
-			default:
+			if (LargeureEcran > HauteurEcran)
+				Landscape=true;
+			else
+				Landscape=false;
+
+//			alert ("landscape "+ Landscape +" -- "+ LargeureEcran +" - "+ HauteurEcran);
+			if (Landscape){
 				Correction = (Ratio / Reference)*100;
+				document.getElementsByTagName("video")[0].style.width = Correction+"%";
+			}
+			else{
+				document.getElementsByTagName("video")[0].style.width = LargeureEcran+"px";
 			}
 			
-			document.getElementsByTagName("video")[0].style.width = Correction+"%";
 			
-//			alert("--"+LargeureEcran+"--"+HauteurEcran+"--"+Ratio+"--"+Correction+"--");
 		</script>
 	</body> 
 </html>
