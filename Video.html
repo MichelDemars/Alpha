@@ -4,6 +4,15 @@
 		<meta charset="utf-8" />
 		<!--<link type="text/css" rel="stylesheet" href="monCSS.css"/> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script>
+		$(document).on("pagecreate",function(event){
+		  $(window).on("orientationchange",function(){
+			 redimScreen();
+		  });                     
+		});
+		</script>
 		<style> 
 			
 			#handler{
@@ -53,6 +62,25 @@
 			}*/
 		</style>
 		<script  type="text/javascript">
+			function redimScreen(){
+				var LargeureEcran = window.outerWidth;
+				var HauteurEcran = window.outerHeight;
+				var Ratio =  HauteurEcran /LargeureEcran;
+				var Reference = 0.75;
+				if (LargeureEcran > HauteurEcran)
+					Landscape=true;
+				else
+					Landscape=false;
+
+	//			alert ("landscape "+ Landscape +" -- "+ LargeureEcran +" - "+ HauteurEcran);
+				if (Landscape){
+					Correction = (Ratio / Reference)*100;
+					document.getElementsByTagName("video")[0].style.width = Correction+"%";
+				}
+				else{
+					document.getElementsByTagName("video")[0].style.width = LargeureEcran+"px";
+				}
+			}
 			function DisplayButtons(){
 				x = document.getElementsByTagName("button")
 				for (i=0;i<x.length;i++){
